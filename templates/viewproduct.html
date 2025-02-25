@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+</head>
+<body>
+    <div class="container">
+        <table class="table table-striped border table-reponsive table-success mt-3">
+            <tr>
+                <th>Sr.No.</th>
+                <th>ProductName</th>
+                <th>ProductDescription</th>
+                <th>Productcategory</th>
+                <th>OfferPrice</th>
+                <th>ActualPrice</th>
+                <th>Stock</th>
+                <th>ProductImage</th>
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.productname}}</td>
+                <td>{{i.productdescription}}</td>
+                <td>{{i.productcategory}}</td>
+                <td>&#8377;{{i.offerprice}}</td>
+                <td>&#8377;{{i.actualprice}}</td>
+                <td>{{i.stock}}</td>
+                <td><img src="{{i.productimage.url}}" height="80px" width="80px" alt="..."></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="/admindashboard" class="btn btn-success float-end" style="width:100px; font-size: 20px;">Back</a>
+    </div>
+</body>
+</html>

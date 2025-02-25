@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: lightblue;
+        }
+  
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+  
+        .card {
+            width: 550px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+  
+        h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+  
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+  
+        input {
+            padding: 15px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(255, 250, 250);
+        }
+       
+         button {
+            padding: 10px;
+            background-color: #fff;
+            border: none;
+            border-radius: 5px;
+            
+        }
+        @media (max-width: 480px) {
+            .card {
+            width: 100%;
+            max-width: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h2>Add Product</h2>
+            <form action="/addproduct" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="productname" class="form-label">ProductName</label>
+                <input type="text" id="productname" name="productname"class="form-control">
+
+                <label for="productdescription" class="form-label">ProductDescription</label>
+                <input type="text" id="productdescription" name="productdescription" class="form-control">
+
+                <label for="productcategory" class="form-label">Productcategory</label>
+                <input type="text" id="productcategory" name="productcategory"  class="form-control">
+
+                <label for="offerprice" class="form-label">OfferPrice</label>
+                <input type="text" id="offerprice" name="offerprice"  class="form-control">
+
+                <label for="actualprice" class="form-label">ActualPrice</label>
+                <input type="text" id="actualprice" name="actualprice" class="form-control">
+
+                
+                <label for="stock" class="form-label">Stock</label>
+                <input type="text" id="stock" name="stock" class="form-control">
+
+                
+                <label for="productimage" class="form-label">ProductImage</label>
+                <input type="file" id="productimage" name="productimage" class="form-control">
+
+                <button type="submit" class="btn btn-outline-success w-25">ADD</button><br>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

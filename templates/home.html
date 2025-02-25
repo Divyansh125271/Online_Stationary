@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  /></head>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+    body{
+        overflow-x: hidden;
+    }
+    nav{
+        overflow: hidden;
+        background-color: #bfdbdc;
+    }
+    nav a{
+        text-decoration: none;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        margin: 5px;
+        font-size: 20px;
+        padding: 5px;
+        margin-left: 10px;
+        color: black;
+    }
+    .box{
+        height: 510px;
+        width: 1365px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url("{% static '/pexels-olia-danilevich-5088017.jpg' %}");
+    }
+    .box h1{
+        margin-left: 50px;
+        width: 400px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+    ul {
+        margin: 0px;
+        padding: 0px;
+    }
+    .footer-section {
+        background: #151414;
+        position: relative;
+    }
+    .footer-cta {
+        border-bottom: 1px solid #373636;
+    }
+    .single-cta i {
+        color: #ff5e14;
+        font-size: 30px;
+        float: left;
+        margin-top: 8px;
+    }
+    .cta-text {
+        padding-left: 15px;
+        display: inline-block;
+    }
+    .cta-text h4 {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 2px;
+    }
+    .cta-text span {
+        color: #757575;
+        font-size: 15px;
+    }
+    .footer-content {
+    position: relative;
+    z-index: 2;
+    }
+   
+    
+    .footer-text p {
+    margin-bottom: 14px;
+    font-size: 14px;
+        color: #7e7e7e;
+    line-height: 28px;
+    }
+    .footer-social-icon span {
+        color: #fff;
+        display: block;
+        font-size: 20px;
+        font-weight: 700;
+        font-family: 'Poppins', sans-serif;
+        margin-bottom: 20px;
+    }
+    .footer-social-icon a {
+        color: #fff;
+        font-size: 16px;
+        margin-right: 15px;
+    }
+    .footer-social-icon i {
+        height: 40px;
+        width: 40px;
+        text-align: center;
+        line-height: 38px;
+        border-radius: 50%;
+    }
+    .facebook-bg{
+        background: #3B5998;
+    }
+    .twitter-bg{
+        background: #55ACEE;
+    }
+    .google-bg{
+        background: #6d9ef3;
+    }
+    .footer-widget-heading h3 {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 40px;
+        position: relative;
+    }
+    .footer-widget-heading h3::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -15px;
+        height: 2px;
+        width: 50px;
+        background: #147eff;
+    }
+    .footer-widget ul li {
+        display: inline-block;
+        float: left;
+        width: 50%;
+        margin-bottom: 12px;
+    }
+    .footer-widget ul li a:hover{
+       color: #2a9cfa;
+    }
+    .footer-widget ul li a {
+        color: #878787;
+        text-transform: capitalize;
+    }
+    .subscribe-form {
+        position: relative;
+        overflow: hidden;
+    }
+    .subscribe-form input {
+        width: 100%;
+        padding: 14px 28px;
+        background: #2E2E2E;
+        border: 1px solid #2E2E2E;
+        color: #fff;
+    }
+    .subscribe-form button {
+        position: absolute;
+        right: 0;
+        background: #146aff;
+        padding: 13px 20px;
+        border: 1px solid #147eff;
+        top: 0;
+    }
+    .subscribe-form button i {
+        color: #fff;
+        font-size: 22px;
+        transform: rotate(-6deg);
+    }
+    .copyright-area{
+        background: #202020;
+        padding: 25px 0;
+    }
+    .copyright-text p {
+        margin: 0;
+        font-size: 14px;
+        color: #878787;
+    }
+    .copyright-text p a{
+        color: #147eff;
+    }
+    .footer-menu li {
+        display: inline-block;
+        margin-left: 20px;
+    }
+    .footer-menu li:hover a{
+        color: #1462ff;
+    }
+    .footer-menu li a {
+        font-size: 14px;
+        color: #878787;
+    }
+</style>
+<body>
+    <nav class="sticky-top">
+        <a href="" class="float-start mx-2" style="font-size: 30px; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Paper Paradise</a>
+        <div class=" p-0 m-2">
+        {% if user.is_authenticated  %}
+        <a href="/bag" class="float-end"><button type="button" class="btn btn-dark border-0 mt-0 ">
+            <span class="badge text-bg-dark mx-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
+                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                </svg>{{length}}</span>
+          </button></a>
+        <a href="/log" class="float-end mx-2 mx-1"> <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-person-circle mx-1" viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+          </svg>{{user.username}}</a>
+        <a href="/out" class="float-end">logout</a>
+        <a href="/trackorder" class="float-end">Track Order</a> 
+        {% else %}  
+        <a href="/log" class="float-end mx-2 mx-1"> <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-person-circle mx-1" viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+          </svg>login</a> 
+        {% endif %}
+
+        <a href="/contactus" class="float-end">Contact Us</a>
+        <a href="/aboutus" class="float-end">About Us</a>
+        <a href="" class="float-end">Home</a>
+        </div>
+    </nav>
+    <div class="box">
+        <br>
+        <br>
+        <div class="container mt-3 mx-3">
+            <h1 class="animate__animated animate__backInLeft animate__slow">Oranize your desk with office essentials.</h1>
+            <button type="button" class="btn btn-success" style="margin-left: 55px;">Shop Now</button>
+        </div>
+    </div>
+    <h1 style="text-align: center; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; margin-top: 10px;">PRODUCTS</h1>
+    <div class="container">
+        <div class="row">
+            {% for i in data %}
+            <div class="col-4">
+                <div class="box1 p-2">
+                    <form action="/cart/{{i.id}}" method="POST">
+                        {% csrf_token %}
+                        <div class="card animate__animated animate__pulse animate__delay-2s " style="width: 20rem; margin-left: 25px;">
+                            <img src="{{i.productimage.url}}" class="card-img-top" alt="..." height="240px" width="150px">
+                            <div class="card-body">
+                              <h5 class="card-title">{{i.productname}}</h5>
+                              <p class="card-text">{{i.productdescription}}</p>
+                              <p class="card-txt">&#8377;{{i.offerprice}} <del>&#8377;{{i.actualprice}}</del></p>
+
+                              <select name="quantity" id="">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                              </select>
+                              
+                              <p class="card-text">{{i.stock}}</p>
+                             <button type="submit" class="btn btn-success">Add to cart</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+           {% endfor %}  
+        </div>
+    </div>
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-cta pt-5 pb-5">
+                <div class="row">
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="cta-text">
+                                <h4>Find us</h4>
+                                <span>1010 Avenue, sw 54321, chandigarh</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="fas fa-phone"></i>
+                            <div class="cta-text">
+                                <h4>Call us</h4>
+                                <span>9876543210 </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 mb-30">
+                        <div class="single-cta">
+                            <i class="far fa-envelope-open"></i>
+                            <div class="cta-text">
+                                <h4>Mail us</h4>
+                                <span>divyanshu6939@gmail.com</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-content pt-5 pb-5">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 mb-50">
+                        <div class="footer-widget">
+                            <div class="footer-text">
+                                <p>Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do eiusmod tempor incididuntut consec tetur adipisicing
+                                elit,Lorem ipsum dolor sit amet.</p>
+                            </div>
+                            <div class="footer-social-icon">
+                                <span>Follow us</span>
+                                <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
+                                <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
+                                <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3>Useful Links</h3>
+                            </div>
+                            <ul>
+                                <li><a href="/home">Home</a></li>
+                                <li><a href="/aboutus">About us</a></li>
+                                <li><a href="#">Our Services</a></li>
+                                <li><a href="/contactus">Contact us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3>Subscribe</h3>
+                            </div>
+                            <div class="footer-text mb-25">
+                                <p>Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
+                            </div>
+                            <div class="subscribe-form">
+                                <form action="#">
+                                    <input type="text" placeholder="Email Address">
+                                    <button><i class="fab fa-telegram-plane"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 text-center text-lg-center" style="margin-left: 300px;">
+                        
+                        <div class="copyright-text">
+                            <p >Copyright &copy; 2023, All Right Reserved</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

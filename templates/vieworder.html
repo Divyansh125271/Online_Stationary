@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+</head>
+<body>
+    <div class="container">
+        <table class="table table-striped border table-reponsive mt-3">
+            <tr >
+                <th class="bg-info">Sr.No.</th>
+                <th class="bg-info">First name</th>
+                <th class="bg-info">Last name</th>
+                <th class="bg-info">Email</th>
+                <th class="bg-info">Contact</th>
+                <th class="bg-info">Address</th>
+                <th class="bg-info">Product</th>
+                <th class="bg-info">Price</th>
+                <th class="bg-info">Status</th>
+                <th class="bg-info">Status Update</th>
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.firstname}}</td>
+                <td>{{i.lastname}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.contact}}</td>
+                <td>{{i.address}}</td>
+                <td>{{i.total_product}}</td>
+                <td>{{i.total_price}}</td>
+                <td>{{i.status}}</td>
+                <td>
+                    <form action="status/{{i.id}}" method="POST">
+                        {% csrf_token %}
+                        <select name="status">
+                            <option value="delivered">delivered</option>
+                            <option value="pending">pending</option>
+                            <option value="on_the_way">on the way</option>
+                            <option value="order_confirmed">order confirmed</option>
+                        </select>
+                        <button type="submit" class="btn btn-info">Save</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="/admindashboard" class="btn btn-success float-end" style="width:100px; font-size: 20px;">Back</a>
+    </div>
+</body>
+</html>
